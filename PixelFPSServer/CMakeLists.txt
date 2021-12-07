@@ -1,8 +1,8 @@
 ﻿cmake_minimum_required (VERSION 3.8)
 
-add_executable (PixelFPSServer "PixelFPSServer.cpp" "PixelFPSServer.h")
+#link:https://stackoverflow.com/questions/1662909/undefined-reference-to-pthread-create-in-linux
+SET(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -pthread")
 
 include_directories("../asio-1.20.0_include/")
 
-# link:https://stackoverflow.com/questions/1620918/cmake-and-libpthread
-SET(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -pthread")
+add_executable (PixelFPSServer "PixelFPSServer.cpp" "PixelFPSServer.h")
