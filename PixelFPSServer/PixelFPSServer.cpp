@@ -1,9 +1,5 @@
 ﻿#include "PixelFPSServer.h"
 
-using namespace std;
-using namespace asio;
-using namespace asio::ip;
-
 int main()
 {
     cout << "Hello CMake.\n";

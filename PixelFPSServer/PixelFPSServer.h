@@ -19,3 +19,8 @@
 #ifdef __linux__
 #include <unistd.h>
 #endif
+
+//namespaces
+using namespace std;
+using namespace asio;
+using namespace asio::ip;
