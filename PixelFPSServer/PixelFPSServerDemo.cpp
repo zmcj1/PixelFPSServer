@@ -1,12 +1,14 @@
 ﻿#include "PixelFPSServer.h"
 
-int main()
+int main(int argc, char** argv)
 {
     try
     {
+        error_code ec;
+
         asio::io_context context;
 
-        tcp::acceptor acceptor(context, tcp::endpoint(tcp::v4(), 17971));
+        tcp::acceptor acceptor(context, tcp::endpoint(make_address("127.0.0.1", ec), 17971));
 
         cout << "Server open.\n";
 
@@ -14,6 +16,8 @@ int main()
         {
             tcp::socket socket(context);
             acceptor.accept(socket);
+
+            cout << "received client!\n";
 
             string msg = "Hello Client!";
 
