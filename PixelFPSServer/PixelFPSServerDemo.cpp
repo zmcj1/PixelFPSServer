@@ -8,7 +8,7 @@ int main(int argc, char** argv)
 
         asio::io_context context;
 
-        tcp::acceptor acceptor(context, tcp::endpoint(make_address("127.0.0.1", ec), 8868));
+        tcp::acceptor acceptor(context, tcp::endpoint(make_address("127.0.0.1", ec), stoi(argv[1])));
 
         cout << "Server open.\n";
 
