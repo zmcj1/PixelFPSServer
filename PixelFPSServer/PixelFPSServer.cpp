@@ -1,4 +1,27 @@
 ﻿#include "PixelFPSServer.h"
+#include "NetworkCommon.hpp"
+
+vector<char> DataBuffer(1024 * 20);
+
+void GrabSomeData(tcp::socket& socket)
+{
+    socket.async_read_some(buffer(DataBuffer.data(), DataBuffer.size()),
+        [&](error_code ec, size_t length)
+        {
+            if (!ec)
+            {
+                cout << "read" << length << "bytes\n";
+
+                for (int i = 0; i < length; i++)
+                {
+                    cout << DataBuffer[i];
+                }
+
+                GrabSomeData(socket);
+            }
+        }
+    );
+}
 
 int main()
 {
@@ -31,6 +54,7 @@ int main()
 
         socket.write_some(buffer(request.data(), request.size()), ec);
 
+        //socket.wait(socket.wait_read);
         this_thread::sleep_for(2000ms);
 
         size_t bytes = socket.available();
