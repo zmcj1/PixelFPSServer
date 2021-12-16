@@ -8,7 +8,4 @@ set(CMAKE_CXX_STANDARD 17)
 
 include_directories("../asio-1.20.0_include/")
 
-add_executable(PixelFPSServer "olcPGEX_Network.h" "MMO_Common.h" "MMO_Server.cpp")
-
-# add_executable (PixelFPSServer "PixelFPSServer.cpp" "PixelFPSServer.h" "NetworkCommon.hpp")
-# add_executable (PixelFPSServer "PixelFPSServerDemo.cpp" "PixelFPSServer.h")
+add_executable(server "server.cpp" "olcPGEX_Network.h" "NetworkMessage.hpp" "FPS_Server.hpp")
